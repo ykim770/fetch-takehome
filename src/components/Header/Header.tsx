@@ -1,10 +1,12 @@
 import React from 'react';
+import banner from './../../Images/fetch-banner.png';
+import fetch from './../../Images/fetch.svg';
 
 const Header = () => {
   return (
     <nav className='primary-nav' aria-label={'navigation'}>
       <a href='https://fetch.com' id='desktop-home'>
-        <img id='fetch-banner' src='../../../Images/fetch-banner.png' />
+        <img id='fetch-banner' src={banner} alt='Fetch Banner' />
       </a>
       <span className='grouped-nav'>
         <a href='https://fetch.com/brands'>Brands</a>
@@ -15,7 +17,7 @@ const Header = () => {
       </span>
       <span className='mobile-nav'>
         <a href='https://fetch.com'>
-          <img id='fetch' src='../../../Images/fetch.svg' />
+          <img id='fetch' src={fetch} alt='Fetch Home' />
         </a>
         <span className='material-symbols-outlined'>menu</span>
       </span>
