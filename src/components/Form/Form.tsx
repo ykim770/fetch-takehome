@@ -31,19 +31,28 @@ const Form = ({ occupations, states }: IData) => {
       return window.alert('Please select an input :)');
     fields.name = fields.name.trim();
     fields.email = fields.email.trim();
-    const res = await axios.post<IUser>(
-      'https://frontend-take-home.fetchrewards.com/form',
-      fields,
-    );
-    if (res.status === 201) {
-      setFields({
-        name: '',
-        email: '',
-        password: '',
-        occupation: '',
-        state: '',
-      });
-      setSubmitted(true);
+    try {
+      const res = await axios.post<IUser>(
+        'https://frontend-take-home.fetchrewards.com/form',
+        fields,
+      );
+      if (res.status === 201) {
+        setFields({
+          name: '',
+          email: '',
+          password: '',
+          occupation: '',
+          state: '',
+        });
+        setSubmitted(true);
+      }
+    } catch (error: unknown) {
+      console.log('Oops, looks like something went wrong here');
+      if (axios.isAxiosError(error)) {
+        console.log('Data:', error?.response?.data);
+        console.log('Status:', error?.response?.status);
+      }
+      window.alert('Oops, looks like something went wrong here');
     }
   };
   return (
